@@ -1,0 +1,40 @@
+# Build outputs
+bin/
+obj/
+publish/
+setup/
+payload/
+installer-payload/
+*.exe
+*.dll
+*.pdb
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Node
+node_modules/
+
+# Logs & runtime state
+*.log
+wang.log
+ai-order.json
+out/
+*.png
+
+# Editor / OS
+.vs/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets — never commit
+*.env
+wang-service.env
+magpie-models.json
+platform-info.txt
+
+# security-tool local audit cache
+.mimosa/

@@ -1,0 +1,45 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ice" x1="96" y1="64" x2="416" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.55" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#1E3A5F"/>
+    </linearGradient>
+    <linearGradient id="helm" x1="256" y1="96" x2="256" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F9FF"/>
+      <stop offset="1" stop-color="#BAE6FD"/>
+    </linearGradient>
+    <filter id="glow" x="-40" y="-40" width="580" height="580" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- rounded ice-blue plate -->
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#ice)"/>
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="#0F172A" fill-opacity="0.18"/>
+
+  <!-- inner ring -->
+  <circle cx="256" cy="256" r="168" stroke="#E0F2FE" stroke-opacity="0.5" stroke-width="6" fill="none"/>
+
+  <!-- helmet / general silhouette -->
+  <g filter="url(#glow)">
+    <path d="M256 116c-72 0-130 55-136 124l-8 66c-2 18 12 32 30 32h228c18 0 32-14 30-32l-8-66c-6-69-64-124-136-124z"
+          fill="url(#helm)"/>
+    <!-- visor -->
+    <path d="M148 244c30-22 66-32 108-32s78 10 108 32l-12 34H160z" fill="#0F172A" fill-opacity="0.85"/>
+    <!-- crest -->
+    <path d="M256 96c14 0 24 10 24 24 0 8-4 14-10 18 16 4 28 18 28 36 0 20-16 36-42 36s-42-16-42-36c0-18 12-32 28-36-6-4-10-10-10-18 0-14 10-24 24-24z"
+          fill="#FBBF24"/>
+    <!-- chin strap -->
+    <path d="M176 352c14 30 44 48 80 48s66-18 80-48" stroke="#0EA5E9" stroke-width="12" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- 王 mark on the chest -->
+  <g fill="#0F172A" fill-opacity="0.9">
+    <rect x="226" y="300" width="10" height="34" rx="3"/>
+    <rect x="246" y="300" width="10" height="34" rx="3"/>
+    <rect x="266" y="300" width="10" height="34" rx="3"/>
+    <rect x="226" y="300" width="50" height="9" rx="3"/>
+  </g>
+</svg>

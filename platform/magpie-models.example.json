@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "group/free",
+    "display_name": "Gateway default (free)",
+    "creator": "gateway",
+    "context_window": 1048576,
+    "max_output_tokens": 524288
+  },
+  {
+    "slug": "group/deepseek",
+    "display_name": "Gateway DeepSeek group",
+    "creator": "deepseek",
+    "context_window": 1048576,
+    "max_output_tokens": 393216
+  }
+]

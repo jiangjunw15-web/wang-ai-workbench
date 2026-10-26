@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>WangInstaller</RootNamespace>
+    <AssemblyName>安装王将军AI工作台</AssemblyName>
+    <ApplicationIcon>Assets\wang.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <Product>王将军AI工作台 安装程序</Product>
+    <AssemblyTitle>王将军AI工作台 安装程序</AssemblyTitle>
+    <Company>王将军</Company>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <SatelliteResourcePaths>zh-Hans</SatelliteResourcePaths>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\wang.ico" />
+  </ItemGroup>
+
+  <!-- 桌面端与启动脚本作为嵌入资源打进安装器，产出单一 setup.exe -->
+  <ItemGroup>
+    <EmbeddedResource Include="payload\王将军AI工作台.exe" LogicalName="payload.app.exe" />
+    <EmbeddedResource Include="payload\wang-service-start.bat" LogicalName="payload.service.bat" />
+    <EmbeddedResource Include="payload\relay.js" LogicalName="payload.relay.js" />
+    <EmbeddedResource Include="payload\wang.ico" LogicalName="payload.icon.ico" />
+  </ItemGroup>
+
+</Project>
