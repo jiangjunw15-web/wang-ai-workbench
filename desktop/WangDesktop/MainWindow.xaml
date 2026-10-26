@@ -1,0 +1,111 @@
+<Window x:Class="WangDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="王将军AI工作台"
+        Height="900" Width="1440" MinHeight="600" MinWidth="1024"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        Background="#0F172A"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="ChromeBg" Color="#0F172A"/>
+        <SolidColorBrush x:Key="ChromeFg" Color="#E2E8F0"/>
+        <SolidColorBrush x:Key="Accent" Color="#38BDF8"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+
+        <!-- 自绘标题栏 -->
+        <Border Grid.Row="0" Background="{StaticResource ChromeBg}" BorderBrush="#1E293B" BorderThickness="0,0,0,1"
+                MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="14,0,0,0" VerticalAlignment="Center">
+                    <Ellipse Width="11" Height="11" Fill="#38BDF8" VerticalAlignment="Center"/>
+                    <TextBlock Text="王将军AI工作台" Foreground="{StaticResource ChromeFg}"
+                               FontSize="13" FontWeight="SemiBold" Margin="9,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="StatusText" Text="正在连接…" Foreground="#64748B"
+                               FontSize="11" Margin="14,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="BtnBack" Content="←" Width="34" Height="26" Margin="0,0,2,0"
+                            Foreground="{StaticResource ChromeFg}" Background="Transparent"
+                            BorderThickness="0" Cursor="Hand" FontSize="15" ToolTip="返回上一级 (Alt+←)"
+                            Click="BtnBack_Click" IsEnabled="False"/>
+                    <Button x:Name="BtnForward" Content="→" Width="34" Height="26" Margin="0,0,6,0"
+                            Foreground="{StaticResource ChromeFg}" Background="Transparent"
+                            BorderThickness="0" Cursor="Hand" FontSize="15" ToolTip="前进 (Alt+→)"
+                            Click="BtnForward_Click" IsEnabled="False"/>
+                    <Button x:Name="BtnReload" Content="刷新" Width="58" Height="26" Margin="0,0,6,0"
+                            Foreground="{StaticResource ChromeFg}" Background="Transparent"
+                            BorderBrush="#1E293B" BorderThickness="1" Cursor="Hand" FontSize="12"
+                            Click="BtnReload_Click" ToolTip="重新载入界面"/>
+                    <Button x:Name="BtnMinimize" Content="─" Width="42" Height="26" Margin="0"
+                            Foreground="{StaticResource ChromeFg}" Background="Transparent"
+                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                            Click="BtnMinimize_Click"/>
+                    <Button x:Name="BtnMaximize" Content="▢" Width="42" Height="26" Margin="0"
+                            Foreground="{StaticResource ChromeFg}" Background="Transparent"
+                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                            Click="BtnMaximize_Click"/>
+                    <Button x:Name="BtnClose" Content="✕" Width="46" Height="26" Margin="0"
+                            Foreground="{StaticResource ChromeFg}" Background="Transparent"
+                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                            Click="BtnClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- WebView2 承载平台界面 -->
+        <Grid Grid.Row="1" Background="#F8FAFC">
+            <wv2:WebView2 x:Name="Browser" Visibility="Hidden"/>
+            <Border x:Name="LoadingPanel" Background="#0F172A">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="王将军AI工作台" Foreground="#E2E8F0" FontSize="22" FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="LoadingText" Text="正在启动本机服务…" Foreground="#94A3B8"
+                               FontSize="13" Margin="0,12,0,0" HorizontalAlignment="Center"/>
+                    <ProgressBar x:Name="LoadingBar" Width="260" Height="3" Margin="0,20,0,0"
+                                 IsIndeterminate="True" Foreground="#38BDF8" Background="#1E293B"
+                                 BorderThickness="0"/>
+                    <Button x:Name="BtnRetry" Content="重试" Width="96" Height="30" Margin="0,20,0,0"
+                            HorizontalAlignment="Center" Visibility="Collapsed"
+                            Background="#1E3A5F" Foreground="#F0F9FF" BorderThickness="0" Cursor="Hand"
+                            Click="BtnRetry_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- 状态栏 -->
+        <Border Grid.Row="2" Background="#0F172A" BorderBrush="#1E293B" BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="FooterLeft" Grid.Column="0" Text="王将军AI工作台" Foreground="#64748B"
+                           FontSize="11" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock x:Name="FooterModels" Grid.Column="1" Foreground="#64748B" FontSize="11"
+                           Margin="0,0,14,0" VerticalAlignment="Center"/>
+                <TextBlock x:Name="FooterRight" Grid.Column="2" Foreground="#64748B" FontSize="11"
+                           Margin="0,0,12,0" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

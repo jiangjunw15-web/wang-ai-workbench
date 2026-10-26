@@ -1,0 +1,70 @@
+:root {
+    --background: 248 250 252; /* #F8FAFC 雪白 */
+    --foreground: 15 23 42;    /* #0F172A 夜幕字 */
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+    --primary: 30 58 95;       /* #1E3A5F 深海蓝 */
+    --primary-foreground: 240 249 255;
+    --secondary: 241 245 249;
+    --secondary-foreground: 30 41 59;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 56 189 248;      /* #38BDF8 冰蓝 */
+    --accent-foreground: 8 47 73;
+    --destructive: 239 68 68;
+    --destructive-foreground: 254 242 242;
+    --border: 226 232 240;
+    --input: 203 213 225;
+    --ring: 56 189 248;
+    --radius: 0.625rem;
+    --chart-1: 14 165 233;
+    --chart-2: 56 189 248;
+    --chart-3: 30 58 95;
+    --chart-4: 125 211 252;
+    --chart-5: 186 230 253;
+    --sidebar-background: 15 23 42;    /* #0F172A 夜幕侧栏 */
+    --sidebar-foreground: 226 232 240;
+    --sidebar-primary: 56 189 248;
+    --sidebar-primary-foreground: 8 47 73;
+    --sidebar-accent: 30 41 59;
+    --sidebar-accent-foreground: 240 249 255;
+    --sidebar-border: 30 41 59;
+    --sidebar-ring: 56 189 248;
+  }
+
+  .dark {
+    --background: 2 6 23;       /* #020617 深夜 */
+    --foreground: 226 232 240;
+    --card: 15 23 42;
+    --card-foreground: 226 232 240;
+    --popover: 15 23 42;
+    --popover-foreground: 226 232 240;
+    --primary: 56 189 248;      /* 冰蓝主色 */
+    --primary-foreground: 8 47 73;
+    --secondary: 30 41 59;
+    --secondary-foreground: 226 232 240;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    --accent: 14 165 233;
+    --accent-foreground: 240 249 255;
+    --destructive: 127 29 29;
+    --destructive-foreground: 254 242 242;
+    --border: 30 41 59;
+    --input: 51 65 85;
+    --ring: 56 189 248;
+    --chart-1: 56 189 248;
+    --chart-2: 14 165 233;
+    --chart-3: 125 211 252;
+    --chart-4: 186 230 253;
+    --chart-5: 30 58 95;
+    --sidebar-background: 2 6 23;
+    --sidebar-foreground: 203 213 225;
+    --sidebar-primary: 56 189 248;
+    --sidebar-primary-foreground: 8 47 73;
+    --sidebar-accent: 15 23 42;
+    --sidebar-accent-foreground: 240 249 255;
+    --sidebar-border: 30 41 59;
+    --sidebar-ring: 56 189 248;
+  }

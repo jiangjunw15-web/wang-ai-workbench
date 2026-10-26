@@ -1,0 +1,33 @@
+<svg width="178" height="80" viewBox="0 0 178 80" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wb" x1="8" y1="6" x2="58" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#1E3A5F"/>
+    </linearGradient>
+    <linearGradient id="wf" x1="66" y1="20" x2="172" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E3A5F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 方形徽标 -->
+  <rect x="6" y="8" width="64" height="64" rx="16" fill="url(#wb)"/>
+  <circle cx="38" cy="40" r="22" stroke="#E0F2FE" stroke-opacity="0.45" stroke-width="2.5" fill="none"/>
+  <!-- 头盔 -->
+  <path d="M38 20c-11 0-19.6 8.2-20.6 18.6l-1.3 10.4c-.3 2.8 1.9 5 4.7 5h34.4c2.8 0 5.1-2.2 4.7-5l-1.3-10.4C57.6 28.2 49 20 38 20z" fill="#F0F9FF"/>
+  <path d="M22.7 39.2c4.7-3.4 10.3-5 15.3-5s10.6 1.6 15.3 5l-1.9 5.4H24.6z" fill="#0F172A" fill-opacity="0.85"/>
+  <path d="M38 17.5c2.3 0 4 1.7 4 4 0 1.3-.7 2.3-1.8 2.9 2.7.6 4.6 3 4.6 6 0 3.4-3 6-6.8 6s-6.8-2.6-6.8-6c0-3 1.9-5.4 4.6-6c-1.1-.6-1.8-1.6-1.8-2.9 0-2.3 1.7-4 3.8-4z" fill="#FBBF24"/>
+  <!-- 王 -->
+  <g fill="#0F172A" fill-opacity="0.92">
+    <rect x="30.5" y="47" width="2.6" height="8.4" rx="1"/>
+    <rect x="36.7" y="47" width="2.6" height="8.4" rx="1"/>
+    <rect x="42.9" y="47" width="2.6" height="8.4" rx="1"/>
+    <rect x="30.5" y="47" width="15" height="2.4" rx="1"/>
+  </g>
+
+  <!-- 字标文字 -->
+  <text x="70" y="47" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif"
+        font-size="27" font-weight="700" fill="url(#wf)" letter-spacing="0.5">王将军</text>
+  <text x="70" y="66" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif"
+        font-size="15" font-weight="600" fill="#38BDF8" letter-spacing="3.4">AI 工作台</text>
+</svg>

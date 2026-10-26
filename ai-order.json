@@ -1,0 +1,17 @@
+{
+  "order": [
+    "group/free",
+    "group/deepseek",
+    "group/kimi",
+    "deepseek/deepseek-v4-flash",
+    "auto/deepseek-v4-flash",
+    "auto/minimax-m3.1-flash",
+    "group/micu"
+  ],
+  "roles": {
+    "项目经理": "group/free",
+    "策划师": "group/kimi",
+    "撰稿人": "group/micu",
+    "主编": "group/deepseek"
+  }
+}

@@ -1,0 +1,33 @@
+# ===== 大体积运行时产物（不进版本库）=====
+# WSL 发行版磁盘与根文件系统镜像
+wsl/distro/
+wsl/*.tar.gz
+
+# 官方 AutoGPT 源码副本（上游仓库，不需要再传一遍）
+AutoGPT/
+
+# 桌面端构建输出与安装包/便携版二进制
+desktop/*/bin/
+desktop/*/obj/
+desktop/publish/
+desktop/setup/
+desktop/installer-payload/
+desktop/WangInstaller/payload/
+
+# ===== 凭据与本地状态 =====
+platform-info.txt
+*.env
+auth.json
+relay.log
+wang/wang.log
+**/__pycache__/
+*.pyc
+
+# 工具/agent 本地状态目录
+.mimosa/
+.v2c/
+.video_agent/
+.zcode/
+
+# 临时诊断脚本
+wsl/_diag_*
