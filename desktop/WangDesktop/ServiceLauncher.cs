@@ -32,7 +32,7 @@ internal static class ServiceLauncher
     /// <exception cref="FileNotFoundException">启动脚本缺失。</exception>
     public static void Launch()
     {
-        var script = Candidates().FirstOrDefault(File.Exists);
+        var script = Candidates().FirstOrDefault(IsAcceptableScript);
         if (script is null)
         {
             throw new FileNotFoundException(
@@ -46,5 +46,17 @@ internal static class ServiceLauncher
             UseShellExecute = true,
             WindowStyle = ProcessWindowStyle.Hidden,
         });
+    }
+
+    /// <summary>
+    /// 防御性校验：只接受绝对路径、.bat 后缀、且不含命令行元字符的脚本，
+    /// 即便 WANG_SERVICE_BAT 被设置成异常值也不会被执行。
+    /// </summary>
+    private static bool IsAcceptableScript(string path)
+    {
+        if (!File.Exists(path)) return false;
+        if (!Path.IsPathRooted(path)) return false;
+        if (!path.EndsWith(".bat", StringComparison.OrdinalIgnoreCase)) return false;
+        return path.IndexOfAny(new[] { '"', '&', '|', '<', '>', '^', '%' }) < 0;
     }
 }

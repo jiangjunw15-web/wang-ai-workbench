@@ -30,6 +30,21 @@
 - 服务启动通过固定路径脚本 + `ShellExecute`（无参数、无 shell 拼接）。
 - WebView2 禁用 DevTools 与宿主对象；新窗口一律在当前窗口内导航。
 
+## 静态扫描 triage（Mimosa deep, 2026-10-26）
+
+扫描器对以下 `Process.Start` 调用给出「命令注入」静态告警，经人工 triage 均为
+**固定路径启动、无外部输入拼接**，属误报；保留并附加说明：
+
+1. `desktop/WangDesktop/ServiceLauncher.cs` — 启动固定 `.bat`；已加防御性校验
+   （绝对路径 + `.bat` 后缀 + 不含 `& | < > ^ % "` 元字符），`WANG_SERVICE_BAT`
+   即使被设为异常值也不会被执行。
+2. `desktop/WangInstaller/Program.cs`（卸载清理）— 执行自生成的临时 `.cmd`，
+   其内容全部为常量字符串 + 系统目录派生的安装路径（`%LOCALAPPDATA%\Programs\<常量名>`），
+   文件名含 GUID，无用户输入。
+3. `desktop/WangInstaller/Program.cs`（安装后自启）— 启动安装目录内的固定 EXE。
+
+以上均使用 `UseShellExecute=true` 且**不传任何命令行参数**，不存在参数注入面。
+
 ## 报告漏洞
 
 请通过仓库 Issues 或私密渠道联系维护者，勿在公开渠道贴利用细节。
