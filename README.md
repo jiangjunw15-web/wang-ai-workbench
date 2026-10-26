@@ -109,3 +109,11 @@ docker 拉镜像 → 127.0.0.1:17897 (socat) → relay.js → 127.0.0.1:7897 mih
 - 模型调用失败（连不上网关）：确认 Windows 上 Magpie 在跑（127.0.0.1:3425）、relay.js 在跑（`tasklist | findstr node`）、WSL 内 `systemctl status magpie-relay`。
 - WSL 被自动回收导致平台"自己停了"：keepalive 已处理（`sleep infinity` 常驻 + `vmIdleTimeout=86400000`）。
 - 首次启动的「skills catalog 发布」已用 `AUTOGPT_PUBLISH_SKILLS=false` 关闭（该步骤在本机网络下不稳定，不影响功能）。
+- 跑了但成品是空文件（`outputs/team-*.md` 只有 0～1 字节）：说明某个 LLM 节点失败但图仍以 COMPLETED 收尾。看日志定位：
+  `docker logs autogpt --since 20m 2>&1 | grep -E "Error calling LLM|429"`。
+
+## 已知限制（2026-10-26 实测）
+
+- **`group/free` 上游有频控**：实测出现 `429 — 您的使用量已超出频率限制`（上游 WorkBuddy 给出重置时间）；同一时段 `group/kimi`、`group/micu`、`group/deepseek` 均正常。
+- 团队图的**第一个节点是项目经理，默认用 `group/free`**，所以该模型被限流时整条流水线立即中断（图状态仍是 COMPLETED，但成品为空）。规避方式：等上游重置后重跑，或在「AI 排序管理」把项目经理改到其他模型。
+- 偶发 `Connection aborted / RemoteDisconnected`（上游或代理瞬断），重跑即恢复；一次实测 3 跑中 1 次成功、1 次 429、1 次已记录的瞬断，均非本地配置问题。
